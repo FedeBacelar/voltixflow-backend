@@ -1,6 +1,7 @@
 using VoltixFlowAPI.Extensions;
 using VoltixFlowAPI.Data.Seeders;
 using VoltixFlowAPI.Data;
+using VoltixFlowAPI.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -16,22 +17,8 @@ builder.Services
 	.AddWebApiConfig()
 	.AddSwaggerDocumentation();
 
-builder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, CustomAuthorizationMiddlewareResultHandler>();
-
-using (var sp = builder.Services.BuildServiceProvider())
-using (var scope = sp.CreateScope()) {
-	var contexto = scope.ServiceProvider.GetRequiredService<VoltixDbContext>();
-	var todosLosPermisos = contexto.Permissions
-		.Select(p => p.Name)
-		.ToList();
-
-	builder.Services.AddAuthorization(options => {
-		foreach (var perm in todosLosPermisos) {
-			options.AddPolicy(perm, policy =>
-				policy.RequireClaim("permission", perm));
-		}
-	});
-}
+builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
+builder.Services.AddAuthorization();
 
 builder.Services.AddCors(options => {
 	options.AddPolicy("AllowFrontend", policy => {

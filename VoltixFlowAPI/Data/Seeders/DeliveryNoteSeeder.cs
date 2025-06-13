@@ -13,7 +13,7 @@ namespace VoltixFlowAPI.Data.Seeders {
 					StatusId = status.Id,
 					CreatedAt = DateTime.UtcNow,
 					Observations = "Pedido de prueba",
-					CreatedByUserId = context.Users.First(u => u.Username == "admin").Id
+					CreatedByUserId = context.Users.First(u => u.Username == "Rodrigo Acosta").Id
 				};
 				context.DeliveryNotes.Add(note);
 				context.SaveChanges();

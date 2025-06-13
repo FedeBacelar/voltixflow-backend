@@ -16,34 +16,40 @@ namespace VoltixFlowAPI.Data.Seeders {
 				var users = new List<User>
 				{
 					new User {
-						Username     = "admin",
+						Username     = "Rodrigo Acosta",
 						RoleId       = adminRole.Id,
 						Active       = true,
-						PasswordHash = hasher.HashPassword(null, "admin123")
+						PasswordHash = hasher.HashPassword(null, "clave123")
 					},
 					new User {
-						Username     = "supervisor1",
+						Username     = "Mariana Herrera",
 						RoleId       = supRole.Id,
 						Active       = true,
-						PasswordHash = hasher.HashPassword(null, "super123")
+						PasswordHash = hasher.HashPassword(null, "clave123")
 					},
 					new User {
-						Username     = "depo1",
+						Username     = "Pablo Medina",
 						RoleId       = depoRole.Id,
 						Active       = true,
-						PasswordHash = hasher.HashPassword(null, "depo123")
+						PasswordHash = hasher.HashPassword(null, "clave123")
 					},
 					new User {
-						Username     = "vendedor1",
+						Username     = "Juan Castro",
 						RoleId       = vendRole.Id,
 						Active       = true,
-						PasswordHash = hasher.HashPassword(null, "vent123")
+						PasswordHash = hasher.HashPassword(null, "clave123")
 					},
 					new User {
-						Username     = "asistente1",
+						Username     = "Sofia Hernandez",
+						RoleId       = vendRole.Id,
+						Active       = true,
+						PasswordHash = hasher.HashPassword(null, "clave123")
+					},
+					new User {
+						Username     = "Carlos Ramos",
 						RoleId       = asisRole.Id,
 						Active       = true,
-						PasswordHash = hasher.HashPassword(null, "asis123")
+						PasswordHash = hasher.HashPassword(null, "clave123")
 					}
 				};
 

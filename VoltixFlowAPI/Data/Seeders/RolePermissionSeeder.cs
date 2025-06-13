@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using VoltixFlowAPI.Models;
+﻿using VoltixFlowAPI.Models;
 
 namespace VoltixFlowAPI.Data.Seeders {
 	public static class RolePermissionSeeder {
@@ -25,9 +23,10 @@ namespace VoltixFlowAPI.Data.Seeders {
 			}
 
 			var supervisorAllowed = allPermissions
-				.Where(p => p.Name.EndsWith(".navigate") ||
+				.Where(p => !p.Name.StartsWith("users.") && 
+							(p.Name.EndsWith(".navigate") ||
 							p.Name.EndsWith(".list") ||
-							p.Name.EndsWith(".view"))
+							p.Name.EndsWith(".view")))
 				.ToList();
 
 			foreach (var perm in supervisorAllowed) {
